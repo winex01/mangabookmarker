@@ -62,8 +62,4 @@ class User extends Authenticatable
     | RELATIONS 
     |--------------------------------------------------------------------------
     */
-    public function employee()
-    {
-        return $this->belongsTo(\App\Models\Employee::class);
-    }
 }
