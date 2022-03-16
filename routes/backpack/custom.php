@@ -18,4 +18,5 @@ Route::group([
     Route::crud('menu', 'MenuCrudController');
     Route::crud('source', 'SourceCrudController');
     Route::crud('mangatype', 'MangaTypeCrudController');
+    Route::crud('tag', 'TagCrudController');
 }); // this should be the absolute last line of this file
