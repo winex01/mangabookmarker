@@ -50,6 +50,26 @@ class MangaCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->showColumns();
+
+        // photo
+        $this->crud->modifyColumn('photo', [
+            'type'   => 'image',
+            'height' => '50px',
+            'width'  => '40px',
+            'orderable' => false,
+        ]);
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->crud->set('show.setFromDb', false); // remove fk column such as: gender_id
+        $this->setupListOperation();
+
+        // photo
+        $this->crud->modifyColumn('photo', [
+            'height' => '300px',
+            'width'  => '200px',
+        ]);
     }
 
     /**
