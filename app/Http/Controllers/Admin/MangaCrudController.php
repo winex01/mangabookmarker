@@ -82,7 +82,7 @@ class MangaCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(MangaRequest::class); // TODO:: request
+        CRUD::setValidation(MangaRequest::class);
         $this->customInputs();
         
     }
@@ -95,8 +95,7 @@ class MangaCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        CRUD::setValidation(MangaRequest::class); // TODO:: request
-        $this->customInputs();
+        $this->setupCreateOperation();
     }
 
     private function customInputs()
@@ -114,5 +113,3 @@ class MangaCrudController extends CrudController
         $this->addInlineCreateField('manga_type_id');
     }
 }
-// TODO:: validation request, required title
-// TODO:: validation request, required photo
