@@ -61,6 +61,10 @@ class MangaCrudController extends CrudController
             'width'  => '40px',
             'orderable' => false,
         ]);
+        
+        // limit column length so it wont destroy table column arrangement,
+        // if it's too long the authors/any pivot column wont whow in correct order in list
+        $this->limitColumn('alternative_name');
     }
 
     protected function setupShowOperation()

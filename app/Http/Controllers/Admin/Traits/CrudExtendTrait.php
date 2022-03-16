@@ -415,6 +415,15 @@ trait CrudExtendTrait
     | Columns Related Stuff
     |--------------------------------------------------------------------------
     */
+    public function limitColumn($col, $limit = 100)
+    {
+        $this->removeColumn($col);
+        return $this->crud->addColumn([
+            'name' => $col,
+            'limit' => $limit,
+        ]);
+    }
+
     public function modifyColumnAsClosure($col, $relationshipOrWithAccessor)
     {
         return $this->crud->modifyColumn($col, [
