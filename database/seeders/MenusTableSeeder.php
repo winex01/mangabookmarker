@@ -31,7 +31,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 4,
                 'depth' => 2,
                 'created_at' => '2020-12-16 06:58:25',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             1 => 
             array (
@@ -41,11 +41,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => NULL,
                 'permission' => 'admin_view',
                 'parent_id' => NULL,
-                'lft' => 8,
-                'rgt' => 9,
+                'lft' => 10,
+                'rgt' => 11,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:23:11',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             2 => 
             array (
@@ -55,11 +55,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon la la-history\'></i>',
                 'permission' => 'audit_trails_list',
                 'parent_id' => NULL,
-                'lft' => 10,
-                'rgt' => 11,
+                'lft' => 12,
+                'rgt' => 13,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:26:27',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             3 => 
             array (
@@ -69,11 +69,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-users"></i>',
                 'permission' => NULL,
                 'parent_id' => NULL,
-                'lft' => 12,
-                'rgt' => 19,
+                'lft' => 14,
+                'rgt' => 21,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:27:02',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             4 => 
             array (
@@ -83,11 +83,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-user"></i>',
                 'permission' => 'users_list',
                 'parent_id' => 17,
-                'lft' => 13,
-                'rgt' => 14,
+                'lft' => 15,
+                'rgt' => 16,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:27:32',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             5 => 
             array (
@@ -97,11 +97,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-id-badge"></i>',
                 'permission' => 'roles_list',
                 'parent_id' => 17,
-                'lft' => 15,
-                'rgt' => 16,
+                'lft' => 17,
+                'rgt' => 18,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:27:49',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             6 => 
             array (
@@ -111,11 +111,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-key"></i>',
                 'permission' => 'permissions_list',
                 'parent_id' => 17,
-                'lft' => 17,
-                'rgt' => 18,
+                'lft' => 19,
+                'rgt' => 20,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:28:08',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             7 => 
             array (
@@ -125,11 +125,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-cogs"></i>',
                 'permission' => NULL,
                 'parent_id' => NULL,
-                'lft' => 20,
-                'rgt' => 29,
+                'lft' => 22,
+                'rgt' => 31,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:28:27',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             8 => 
             array (
@@ -139,11 +139,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon la la-files-o"></i>',
                 'permission' => 'advanced_file_manager',
                 'parent_id' => 21,
-                'lft' => 21,
-                'rgt' => 22,
+                'lft' => 23,
+                'rgt' => 24,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:30:40',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             9 => 
             array (
@@ -153,11 +153,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon la la-hdd-o\'></i>',
                 'permission' => 'advanced_backups',
                 'parent_id' => 21,
-                'lft' => 23,
-                'rgt' => 24,
+                'lft' => 25,
+                'rgt' => 26,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:31:21',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             10 => 
             array (
@@ -167,11 +167,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon la la-terminal\'></i>',
                 'permission' => 'advanced_logs',
                 'parent_id' => 21,
-                'lft' => 25,
-                'rgt' => 26,
+                'lft' => 27,
+                'rgt' => 28,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:31:47',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             11 => 
             array (
@@ -181,11 +181,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon la la-cog\'></i>',
                 'permission' => 'advanced_settings',
                 'parent_id' => 21,
-                'lft' => 27,
-                'rgt' => 28,
+                'lft' => 29,
+                'rgt' => 30,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:32:02',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             12 => 
             array (
@@ -195,11 +195,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon la la-list\'></i>',
                 'permission' => 'menus_list',
                 'parent_id' => NULL,
-                'lft' => 30,
-                'rgt' => 31,
+                'lft' => 32,
+                'rgt' => 33,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:32:42',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             13 => 
             array (
@@ -209,11 +209,11 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class=\'nav-icon lab la-laravel\'></i>',
                 'permission' => 'admin_web_tinker',
                 'parent_id' => NULL,
-                'lft' => 32,
-                'rgt' => 33,
+                'lft' => 34,
+                'rgt' => 35,
                 'depth' => 1,
                 'created_at' => '2021-04-04 23:55:28',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             14 => 
             array (
@@ -227,7 +227,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 5,
                 'depth' => 1,
                 'created_at' => '2021-08-04 15:43:05',
-                'updated_at' => '2022-03-16 08:24:27',
+                'updated_at' => '2022-03-16 08:56:30',
             ),
             15 => 
             array (
@@ -237,11 +237,25 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon las la-cloud-download-alt"></i>',
                 'permission' => 'sources_list',
                 'parent_id' => NULL,
+                'lft' => 8,
+                'rgt' => 9,
+                'depth' => 1,
+                'created_at' => '2022-03-16 08:21:00',
+                'updated_at' => '2022-03-16 08:56:30',
+            ),
+            16 => 
+            array (
+                'id' => 70,
+                'label' => 'Manga Types',
+                'url' => 'mangatype',
+                'icon' => '<i class="nav-icon las la-file-alt"></i>',
+                'permission' => 'manga_types_list',
+                'parent_id' => NULL,
                 'lft' => 6,
                 'rgt' => 7,
                 'depth' => 1,
-                'created_at' => '2022-03-16 08:21:00',
-                'updated_at' => '2022-03-16 08:26:28',
+                'created_at' => '2022-03-16 08:55:54',
+                'updated_at' => '2022-03-16 08:58:06',
             ),
         ));
         
