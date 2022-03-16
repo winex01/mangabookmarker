@@ -33,6 +33,10 @@ class Manga extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function mangaType()
+    {
+        return $this->belongsTo(\App\Models\MangaType::class);
+    }
 
     /*
     |--------------------------------------------------------------------------

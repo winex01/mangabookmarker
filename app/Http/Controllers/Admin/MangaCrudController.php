@@ -25,6 +25,9 @@ class MangaCrudController extends CrudController
     use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
 
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+    use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
+    
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -77,5 +80,17 @@ class MangaCrudController extends CrudController
     private function customInputs()
     {
         $this->inputs();
+
+        // photo
+        $this->crud->modifyField('photo', [
+            'type'         => 'image',
+            'crop'         => true,
+            'aspect_ratio' => 0,
+        ]);
+
+        // manga type id
+        $this->addInlineCreateField('manga_type_id');
     }
 }
+// TODO:: validation request, required title
+// TODO:: validation request, required photo
