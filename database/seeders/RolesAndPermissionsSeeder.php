@@ -78,6 +78,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'sources_delete', 
             'sources_revise', 
         ],
+
+        'manga_types' => [
+            'manga_types_list',
+            'manga_types_create', 
+            'manga_types_update', 
+            'manga_types_delete', 
+            'manga_types_revise', 
+        ],
     ];
 
     /**
