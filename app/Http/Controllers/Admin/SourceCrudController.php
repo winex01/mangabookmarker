@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\SourceRequest;
+use App\Http\Requests\SourceCreateRequest;
+use App\Http\Requests\SourceUpdateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -18,7 +19,8 @@ class SourceCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
+    use \Backpack\ReviseOperation\ReviseOperation;
+    use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -28,7 +30,8 @@ class SourceCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Source::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/source');
-        CRUD::setEntityNameStrings('source', 'sources');
+        
+        $this->userPermissions();
     }
 
     /**
@@ -39,13 +42,7 @@ class SourceCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->showColumns();
     }
 
     /**
@@ -56,15 +53,8 @@ class SourceCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(SourceRequest::class);
-
-        CRUD::setFromDb(); // fields
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        CRUD::setValidation(SourceCreateRequest::class);
+        $this->customInputs();
     }
 
     /**
@@ -75,6 +65,12 @@ class SourceCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(SourceUpdateRequest::class);
+        $this->customInputs();
+    }
+
+    private function customInputs()
+    {
+        $this->inputs();
     }
 }

@@ -18,12 +18,6 @@ class CreateSourcesTable extends Migration
 
             $table->string('name');
 
-            // backpack reorder
-            $table->integer('parent_id')->unsigned()->nullable();
-            $table->integer('lft')->unsigned()->nullable();
-            $table->integer('rgt')->unsigned()->nullable();
-            $table->integer('depth')->unsigned()->nullable();
-
             $table->timestamps();
         });
     }
