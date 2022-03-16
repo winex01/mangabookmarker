@@ -31,6 +31,10 @@ class Author extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function mangas()
+    {
+        return $this->hasMany(\App\Models\Manga::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
