@@ -49,11 +49,6 @@ class Manga extends Model
         return $this->belongsTo(\App\Models\MangaType::class);
     }
 
-    public function author()
-    {
-        return $this->belongsTo(\App\Models\Author::class);
-    }
-
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -60,7 +60,6 @@ class MangaCrudController extends CrudController
             'orderable' => false,
         ]);
 
-        $this->showRelationshipColumn('author_id');
         $this->showRelationshipColumn('manga_type_id');
     }
 
@@ -110,9 +109,6 @@ class MangaCrudController extends CrudController
             'crop'         => true,
             'aspect_ratio' => 0,
         ]);
-
-        // author id
-        $this->addInlineCreateField('author_id');
 
         // manga type id
         $this->addInlineCreateField('manga_type_id');
