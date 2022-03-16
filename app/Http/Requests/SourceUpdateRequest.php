@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\SectionCreateRequest;
+use App\Http\Requests\SourceCreateRequest;
 
-class SectionUpdateRequest extends SectionCreateRequest
+class SourceUpdateRequest extends SourceCreateRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +15,8 @@ class SectionUpdateRequest extends SectionCreateRequest
     {
         $rules = parent::rules();
         
-        $rules['name'] = $this->uniqueRules($this->table);
+        $rules['name'] = $this->uniqueRules($this->getTable());
         
         return $rules;
-    }  
+    }
 }

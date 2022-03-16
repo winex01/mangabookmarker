@@ -70,6 +70,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'menus_update',
             'menus_delete',
         ],
+
+        'sources' => [
+            'sources_list',
+            'sources_create', 
+            'sources_update', 
+            'sources_delete', 
+            'sources_revise', 
+        ],
     ];
 
     /**
