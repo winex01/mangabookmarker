@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MangaTypeRequest;
+use App\Http\Requests\MangaTypeCreateRequest;
+use App\Http\Requests\MangaTypeUpdateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -18,7 +19,8 @@ class MangaTypeCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
+    use \Backpack\ReviseOperation\ReviseOperation;
+    use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -28,7 +30,8 @@ class MangaTypeCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MangaType::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/mangatype');
-        CRUD::setEntityNameStrings('mangatype', 'manga_types');
+
+        $this->userPermissions();
     }
 
     /**
@@ -39,13 +42,7 @@ class MangaTypeCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->showColumns();
     }
 
     /**
@@ -56,15 +53,8 @@ class MangaTypeCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(MangaTypeRequest::class);
-
-        CRUD::setFromDb(); // fields
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        CRUD::setValidation(MangaTypeCreateRequest::class);
+        $this->customInputs();
     }
 
     /**
@@ -75,6 +65,12 @@ class MangaTypeCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(MangaTypeUpdateRequest::class);
+        $this->customInputs();
+    }
+
+    private function customInputs()
+    {
+        $this->inputs();
     }
 }
