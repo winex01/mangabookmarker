@@ -94,6 +94,19 @@ class RolesAndPermissionsSeeder extends Seeder
             'tags_delete', 
             'tags_revise', 
         ],
+
+        'mangas' => [
+            'mangas_list',
+            'mangas_create',
+            'mangas_show',
+            'mangas_update',
+            'mangas_delete',
+            'mangas_bulk_delete',
+            'mangas_export',
+            'mangas_force_delete',
+            'mangas_force_bulk_delete',
+            'mangas_revise',
+        ],
     ];
 
     /**

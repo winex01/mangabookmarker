@@ -3,15 +3,18 @@
 namespace App\Models;
 
 use App\Models\Model;
-class MangaType extends Model
+
+class Manga extends Model
 {
+    use \Illuminate\Database\Eloquent\SoftDeletes;
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'manga_types';
+    protected $table = 'mangas';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -24,15 +27,26 @@ class MangaType extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public static function boot() 
+    {
+        parent::boot();
+
+        static::deleted(function($data) {
+            if ($data->photo) {
+                (new self)->deleteFileFromStorage($data, $data->photo);
+            }
+        });
+
+    }
 
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function mangas()
+    public function mangaType()
     {
-        return $this->hasMany(\App\Models\Manga::class);
+        return $this->belongsTo(\App\Models\MangaType::class);
     }
 
     /*
@@ -46,10 +60,24 @@ class MangaType extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+    public function getPhotoAttribute($value)
+    {
+        return ($value != null) ? 'storage/'.$value : $value;
+    }
 
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setPhotoAttribute($value)
+    {
+        $attribute_name = 'photo';
+        // or use your own disk, defined in config/filesystems.php
+        $disk = 'public'; 
+        // destination path relative to the disk above
+        $destination_path = 'images/photo'; 
+
+        $this->uploadImageToDisk($value, $attribute_name, $disk, $destination_path);
+    }
 }
