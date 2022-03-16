@@ -61,6 +61,7 @@ class MangaCrudController extends CrudController
         ]);
 
         $this->showRelationshipColumn('manga_type_id');
+        $this->showRelationshipPivotColumn('authors')->afterColumn('title');
     }
 
     protected function setupShowOperation()
@@ -112,5 +113,8 @@ class MangaCrudController extends CrudController
 
         // manga type id
         $this->addInlineCreateField('manga_type_id');
+
+        // pivot table
+        $this->addInlineCreatePivotField('authors')->afterField('title');
     }
 }

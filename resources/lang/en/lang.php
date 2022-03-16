@@ -90,6 +90,7 @@ return [
     'mangas_author'           => '',
     'mangas_manga_type_id'    => '',
     'mangas_alternative_name' => '',
+    'mangas_authors_hint'     => '',
 
     /*
     |--------------------------------------------------------------------------
