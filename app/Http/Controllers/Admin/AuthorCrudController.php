@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AuthorRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -17,6 +16,9 @@ class AuthorCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\ReviseOperation\ReviseOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
+    use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -27,7 +29,8 @@ class AuthorCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Author::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/author');
-        CRUD::setEntityNameStrings('author', 'authors');
+
+        $this->userPermissions();
     }
 
     /**
@@ -38,13 +41,7 @@ class AuthorCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->showColumns();
     }
 
     /**
@@ -55,15 +52,8 @@ class AuthorCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(AuthorRequest::class);
-
-        CRUD::setFromDb(); // fields
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        CRUD::setValidation(AuthorCreateRequest::class);
+        $this->customInputs(); 
     }
 
     /**
@@ -74,6 +64,12 @@ class AuthorCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(AuthorUpdateRequest::class);
+        $this->customInputs(); 
+    }
+
+    private function customInputs()
+    {
+        $this->inputs();
     }
 }
