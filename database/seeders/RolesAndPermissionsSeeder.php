@@ -107,6 +107,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'mangas_force_bulk_delete',
             'mangas_revise',
         ],
+
+        'authors' => [
+            'authors_list',
+            'authors_create', 
+            'authors_update', 
+            'authors_delete', 
+            'authors_revise', 
+        ],
     ];
 
     /**

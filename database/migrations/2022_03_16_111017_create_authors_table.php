@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMangasTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateMangasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mangas', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->id();
 
-            $table->string('photo')->nullable();
-            $table->string('title');
+            $table->string('name');
 
-            $table->foreignId('manga_type_id')->nullable()->constrained();
-
-            $table->text('alternative_name')->nullable();
-
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateMangasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mangas');
+        Schema::dropIfExists('authors');
     }
 }

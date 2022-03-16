@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MangaTypeCreateRequest;
-use App\Http\Requests\MangaTypeUpdateRequest;
+use App\Http\Requests\AuthorCreateRequest;
+use App\Http\Requests\AuthorUpdateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class MangaTypeCrudController
+ * Class AuthorCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class MangaTypeCrudController extends CrudController
+class AuthorCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,6 +21,7 @@ class MangaTypeCrudController extends CrudController
     use \Backpack\ReviseOperation\ReviseOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -28,8 +29,8 @@ class MangaTypeCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\MangaType::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/mangatype');
+        CRUD::setModel(\App\Models\Author::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/author');
 
         $this->userPermissions();
     }
@@ -53,8 +54,8 @@ class MangaTypeCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(MangaTypeCreateRequest::class);
-        $this->customInputs();
+        CRUD::setValidation(AuthorCreateRequest::class);
+        $this->customInputs(); 
     }
 
     /**
@@ -65,8 +66,8 @@ class MangaTypeCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        CRUD::setValidation(MangaTypeUpdateRequest::class);
-        $this->customInputs();
+        CRUD::setValidation(AuthorUpdateRequest::class);
+        $this->customInputs(); 
     }
 
     private function customInputs()
