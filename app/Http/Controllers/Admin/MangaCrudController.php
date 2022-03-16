@@ -58,6 +58,8 @@ class MangaCrudController extends CrudController
             'width'  => '40px',
             'orderable' => false,
         ]);
+
+        $this->showRelationshipColumn('manga_type_id');
     }
 
     protected function setupShowOperation()
