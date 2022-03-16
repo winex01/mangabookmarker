@@ -16,8 +16,11 @@ class CreateSourcesTable extends Migration
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->foreignId('manga_id')->constrained();
 
+            $table->string('url');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }
