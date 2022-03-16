@@ -18,7 +18,6 @@ class CreateMangasTable extends Migration
 
             $table->string('photo')->nullable();
             $table->string('title');
-            $table->string('author')->nullable();
 
             $table->foreignId('manga_type_id')->nullable()->constrained();
 
