@@ -31,6 +31,10 @@ class Tag extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function mangas()
+    {
+        return $this->belongsToMany(\App\Models\Manga::class);
+    }
 
     /*
     |--------------------------------------------------------------------------

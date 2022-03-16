@@ -28,6 +28,7 @@ class MangaCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
+    use \App\Http\Controllers\Admin\Traits\Fetch\FetchTagTrait; 
     
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -51,6 +52,9 @@ class MangaCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->showColumns();
+        $this->showRelationshipPivotColumn('authors')->afterColumn('title');
+        $this->showRelationshipPivotColumn('tags')->afterColumn('authors');
+        $this->showRelationshipColumn('manga_type_id');
 
         // photo
         $this->crud->modifyColumn('photo', [
@@ -59,9 +63,10 @@ class MangaCrudController extends CrudController
             'width'  => '40px',
             'orderable' => false,
         ]);
-
-        $this->showRelationshipColumn('manga_type_id');
-        $this->showRelationshipPivotColumn('authors')->afterColumn('title');
+        
+        // limit column length so it wont destroy table column arrangement,
+        // if it's too long the authors/any pivot column wont whow in correct order in list
+        $this->limitColumn('alternative_name');
     }
 
     protected function setupShowOperation()
@@ -116,5 +121,6 @@ class MangaCrudController extends CrudController
 
         // pivot table
         $this->addInlineCreatePivotField('authors')->afterField('title');
+        $this->addInlineCreatePivotField('tags')->afterField('authors');
     }
 }

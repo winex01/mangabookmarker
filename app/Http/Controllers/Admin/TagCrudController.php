@@ -21,6 +21,8 @@ class TagCrudController extends CrudController
     use \Backpack\ReviseOperation\ReviseOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
 
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
