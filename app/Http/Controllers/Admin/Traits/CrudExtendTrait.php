@@ -587,6 +587,8 @@ trait CrudExtendTrait
             'attribute' => $attribute, // foreign key attribute that is shown to user
             'model'     => $model, // foreign key model
             'limit'     => $limit, // default no limit
+
+            // 'visibleInTable'  => true, // no point, since it's a large text
         ]);
     }
 

@@ -51,6 +51,8 @@ class MangaCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->showColumns();
+        $this->showRelationshipPivotColumn('authors')->afterColumn('title');
+        $this->showRelationshipColumn('manga_type_id');
 
         // photo
         $this->crud->modifyColumn('photo', [
@@ -59,9 +61,6 @@ class MangaCrudController extends CrudController
             'width'  => '40px',
             'orderable' => false,
         ]);
-
-        $this->showRelationshipColumn('manga_type_id');
-        $this->showRelationshipPivotColumn('authors')->afterColumn('title');
     }
 
     protected function setupShowOperation()
