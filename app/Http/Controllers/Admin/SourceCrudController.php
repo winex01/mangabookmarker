@@ -18,8 +18,14 @@ class SourceCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
+    use \App\Http\Controllers\Admin\Operations\ForceDeleteOperation;
+    use \App\Http\Controllers\Admin\Operations\ForceBulkDeleteOperation;
     use \Backpack\ReviseOperation\ReviseOperation;
+    use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -71,5 +77,6 @@ class SourceCrudController extends CrudController
     private function customInputs()
     {
         $this->inputs();
+        $this->addRelationshipField('manga_id');
     }
 }

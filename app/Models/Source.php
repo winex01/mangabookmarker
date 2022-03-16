@@ -30,6 +30,10 @@ class Source extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function manga()
+    {
+        return $this->belongsTo(\App\Models\Manga::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
