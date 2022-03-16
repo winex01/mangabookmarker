@@ -28,6 +28,7 @@ class MangaCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
+    use \App\Http\Controllers\Admin\Traits\Fetch\FetchTagTrait; 
     
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -52,6 +53,7 @@ class MangaCrudController extends CrudController
     {
         $this->showColumns();
         $this->showRelationshipPivotColumn('authors')->afterColumn('title');
+        $this->showRelationshipPivotColumn('tags')->afterColumn('authors');
         $this->showRelationshipColumn('manga_type_id');
 
         // photo
@@ -119,5 +121,6 @@ class MangaCrudController extends CrudController
 
         // pivot table
         $this->addInlineCreatePivotField('authors')->afterField('title');
+        $this->addInlineCreatePivotField('tags')->afterField('authors');
     }
 }

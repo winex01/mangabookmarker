@@ -53,6 +53,11 @@ class Manga extends Model
     {
         return $this->belongsToMany(\App\Models\Author::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(\App\Models\Tag::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
