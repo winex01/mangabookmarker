@@ -34,7 +34,8 @@ class MangaCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Manga::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/manga');
-        CRUD::setEntityNameStrings('manga', 'mangas');
+
+        $this->userPermissions();
     }
 
     /**
@@ -45,13 +46,7 @@ class MangaCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->showColumns();
     }
 
     /**
@@ -62,15 +57,9 @@ class MangaCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(MangaRequest::class);
-
-        CRUD::setFromDb(); // fields
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        CRUD::setValidation(MangaRequest::class); // TODO:: request
+        $this->customInputs();
+        
     }
 
     /**
@@ -81,6 +70,12 @@ class MangaCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(MangaRequest::class); // TODO:: request
+        $this->customInputs();
+    }
+
+    private function customInputs()
+    {
+        $this->inputs();
     }
 }
