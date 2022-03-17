@@ -58,6 +58,7 @@ class Manga extends Model
     {
         return $this->belongsToMany(\App\Models\Tag::class);
     }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -74,6 +75,13 @@ class Manga extends Model
         return ($value != null) ? 'storage/'.$value : $value;
     }
 
+    public function getNameAttribute()
+    {
+        $authors = $this->authors()->pluck('name')->toArray();
+        $authors = implode(', ', $authors);
+
+        return $this->title ." - ($authors)";
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

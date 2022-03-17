@@ -24,7 +24,7 @@ class MangaCrudController extends CrudController
     use \Backpack\ReviseOperation\ReviseOperation;
     use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
-
+    
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
@@ -66,7 +66,16 @@ class MangaCrudController extends CrudController
         
         // limit column length so it wont destroy table column arrangement,
         // if it's too long the authors/any pivot column wont whow in correct order in list
-        $this->limitColumn('alternative_name');
+        $this->limitColumn('alternative_name', 100);
+
+        $this->crud->removeColumn('sources');
+        $this->crud->addColumn([
+            'name' => 'sources',
+            'type'     => 'closure',
+            'function' => function($entry) {
+                return jsonToLinkImplode($entry->sources, 'url');
+            },
+        ]);
     }
 
     protected function setupShowOperation()
@@ -79,6 +88,8 @@ class MangaCrudController extends CrudController
             'height' => '300px',
             'width'  => '200px',
         ]);
+
+        $this->limitColumn('alternative_name', null);
     }
 
     /**
@@ -116,11 +127,39 @@ class MangaCrudController extends CrudController
             'aspect_ratio' => 0,
         ]);
 
-        // manga type id
-        $this->addInlineCreateField('manga_type_id');
+        // remove to fix arrangement, added again at the bottom
+        $this->crud->removeField('manga_type_id');
+        $this->crud->removeField('alternative_name');
+        $this->crud->removeField('sources');
 
         // pivot table
-        $this->addInlineCreatePivotField('authors')->afterField('title');
-        $this->addInlineCreatePivotField('tags')->afterField('authors');
+        $this->addInlineCreatePivotField('authors');
+        $this->addInlineCreatePivotField('tags');
+        
+        $this->crud->addField(['name' => 'manga_type_id']);
+        $this->addInlineCreateField('manga_type_id');
+
+        $this->crud->addField([
+            'name' => 'alternative_name',
+            'type' => 'textarea'
+        ]);
+
+        // sources
+        $this->crud->addField([
+            'name' => 'sources',
+            'type'  => 'repeatable',
+            'fields' => [
+                [
+                    'name'        => 'url', 
+                    'label'       => convertColumnToHumanReadable('url'),
+                    'type'        => 'url', 
+                ]
+            ],
+        
+            // optional
+            'new_item_label'  => 'Add Source URL', // customize the text of the button
+            'min_rows'        => 1,    
+        ]);
+        
     }
 }

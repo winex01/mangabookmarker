@@ -71,14 +71,6 @@ class RolesAndPermissionsSeeder extends Seeder
             'menus_delete',
         ],
 
-        'sources' => [
-            'sources_list',
-            'sources_create', 
-            'sources_update', 
-            'sources_delete', 
-            'sources_revise', 
-        ],
-
         'manga_types' => [
             'manga_types_list',
             'manga_types_create', 

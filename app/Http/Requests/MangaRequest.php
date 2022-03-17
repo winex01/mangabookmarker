@@ -23,6 +23,7 @@ class MangaRequest extends FormRequest
             'photo'         => 'required',
             'title'         => 'required',
             'manga_type_id' => 'nullable|numeric',
+            'sources'       => 'required|json',
         ];
 
         return $rules;
