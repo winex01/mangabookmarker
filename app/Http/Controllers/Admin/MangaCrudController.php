@@ -24,12 +24,13 @@ class MangaCrudController extends CrudController
     use \Backpack\ReviseOperation\ReviseOperation;
     use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
-
+    
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchTagTrait; 
     
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -118,11 +119,20 @@ class MangaCrudController extends CrudController
             'aspect_ratio' => 0,
         ]);
 
-        // manga type id
-        $this->addInlineCreateField('manga_type_id');
+        // remove to fix arrangement, added again at the bottom, inlinecreate cause arrange to disorder
+        $this->crud->removeField('manga_type_id');
+        $this->crud->removeField('alternative_name');
 
         // pivot table
-        $this->addInlineCreatePivotField('authors')->afterField('title');
-        $this->addInlineCreatePivotField('tags')->afterField('authors');
+        $this->addInlineCreatePivotField('authors');
+        $this->addInlineCreatePivotField('tags');
+        
+        $this->crud->addField(['name' => 'manga_type_id']);
+        $this->addInlineCreateField('manga_type_id');
+
+        $this->crud->addField([
+            'name' => 'alternative_name',
+            'type' => 'textarea'
+        ]);
     }
 }
