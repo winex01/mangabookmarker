@@ -110,7 +110,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         'chapters' => [
             'chapters_list',
-            'chapters_create',
+            // 'chapters_create',
             'chapters_show',
             'chapters_update',
             'chapters_delete',
