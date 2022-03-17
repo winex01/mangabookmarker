@@ -31,7 +31,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 3,
                 'depth' => 1,
                 'created_at' => '2020-12-16 06:58:25',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             1 => 
             array (
@@ -45,7 +45,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 15,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:23:11',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             2 => 
             array (
@@ -59,7 +59,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 17,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:26:27',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             3 => 
             array (
@@ -73,7 +73,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 25,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:27:02',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             4 => 
             array (
@@ -87,7 +87,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 20,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:27:32',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             5 => 
             array (
@@ -101,7 +101,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 22,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:27:49',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             6 => 
             array (
@@ -115,7 +115,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 24,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:28:08',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             7 => 
             array (
@@ -129,7 +129,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 35,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:28:27',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             8 => 
             array (
@@ -143,7 +143,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 28,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:30:40',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             9 => 
             array (
@@ -157,7 +157,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 30,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:31:21',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             10 => 
             array (
@@ -171,7 +171,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 32,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:31:47',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             11 => 
             array (
@@ -185,7 +185,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 34,
                 'depth' => 2,
                 'created_at' => '2020-12-16 07:32:02',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             12 => 
             array (
@@ -199,7 +199,7 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 37,
                 'depth' => 1,
                 'created_at' => '2020-12-16 07:32:42',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             13 => 
             array (
@@ -213,23 +213,9 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 39,
                 'depth' => 1,
                 'created_at' => '2021-04-04 23:55:28',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
             14 => 
-            array (
-                'id' => 69,
-                'label' => 'Sources',
-                'url' => 'source',
-                'icon' => '<i class="nav-icon las la-cloud-download-alt"></i>',
-                'permission' => 'sources_list',
-                'parent_id' => NULL,
-                'lft' => 6,
-                'rgt' => 7,
-                'depth' => 1,
-                'created_at' => '2022-03-16 08:21:00',
-                'updated_at' => '2022-03-17 08:43:54',
-            ),
-            15 => 
             array (
                 'id' => 70,
                 'label' => 'Manga Types',
@@ -241,9 +227,9 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 13,
                 'depth' => 1,
                 'created_at' => '2022-03-16 08:55:54',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 71,
                 'label' => 'Tags',
@@ -255,9 +241,9 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 11,
                 'depth' => 1,
                 'created_at' => '2022-03-16 09:18:01',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 72,
                 'label' => 'Mangas',
@@ -265,13 +251,13 @@ class MenusTableSeeder extends Seeder
                 'icon' => '<i class="nav-icon las la-book-open"></i>',
                 'permission' => 'mangas_list',
                 'parent_id' => NULL,
-                'lft' => 4,
-                'rgt' => 5,
+                'lft' => 6,
+                'rgt' => 7,
                 'depth' => 1,
                 'created_at' => '2022-03-16 09:52:11',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 73,
                 'label' => 'Authors',
@@ -283,7 +269,21 @@ class MenusTableSeeder extends Seeder
                 'rgt' => 9,
                 'depth' => 1,
                 'created_at' => '2022-03-16 11:15:02',
-                'updated_at' => '2022-03-17 08:43:54',
+                'updated_at' => '2022-03-17 11:50:27',
+            ),
+            18 => 
+            array (
+                'id' => 74,
+                'label' => 'Chapters',
+                'url' => 'chapter',
+                'icon' => '<i class="nav-icon las la-file-alt"></i>',
+                'permission' => 'chapters_list',
+                'parent_id' => NULL,
+                'lft' => 4,
+                'rgt' => 5,
+                'depth' => 1,
+                'created_at' => '2022-03-17 11:48:37',
+                'updated_at' => '2022-03-17 11:50:27',
             ),
         ));
         
