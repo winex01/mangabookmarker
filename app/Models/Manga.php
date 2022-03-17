@@ -59,10 +59,6 @@ class Manga extends Model
         return $this->belongsToMany(\App\Models\Tag::class);
     }
 
-    public function sources()
-    {
-        return $this->hasMany(\App\Models\Source::class);
-    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

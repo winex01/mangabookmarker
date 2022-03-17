@@ -85,6 +85,7 @@ return [
     'mangas_alternative_name' => '',
     'mangas_authors_hint'     => '',
     'mangas_tags_hint'        => '',
+    'mangas_url'              => 'Url',
 
     /*
     |--------------------------------------------------------------------------

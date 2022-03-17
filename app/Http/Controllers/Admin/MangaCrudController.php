@@ -121,6 +121,7 @@ class MangaCrudController extends CrudController
         // remove to fix arrangement, added again at the bottom
         $this->crud->removeField('manga_type_id');
         $this->crud->removeField('alternative_name');
+        $this->crud->removeField('sources');
 
         // pivot table
         $this->addInlineCreatePivotField('authors');
@@ -134,7 +135,22 @@ class MangaCrudController extends CrudController
             'type' => 'textarea'
         ]);
 
-        // TODO:: sources
+        // sources
+        $this->crud->addField([
+            'name' => 'sources',
+            'type'  => 'repeatable',
+            'fields' => [
+                [
+                    'name'        => 'url', 
+                    'label'       => convertColumnToHumanReadable('url'),
+                    'type'        => 'url', 
+                ]
+            ],
+        
+            // optional
+            'new_item_label'  => 'Add Source URL', // customize the text of the button
+            'min_rows'        => 1,    
+        ]);
         
     }
 }
