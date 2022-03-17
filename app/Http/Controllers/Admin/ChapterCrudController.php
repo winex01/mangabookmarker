@@ -78,3 +78,5 @@ class ChapterCrudController extends CrudController
         $this->inputs();
     }
 }
+// TODO:: validation request unique manga and chapter.
+// TODO:: add Scan button operation above, beside create chapter.
