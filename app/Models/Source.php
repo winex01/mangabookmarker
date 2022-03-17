@@ -46,6 +46,10 @@ class Source extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+    public function urlWithLink()
+    {
+        return '<a href="'.url($this->url).'" target="_blank">'.$this->url.'</a>';
+    }
 
     /*
     |--------------------------------------------------------------------------

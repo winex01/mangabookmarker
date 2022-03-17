@@ -49,6 +49,13 @@ class SourceCrudController extends CrudController
     {
         $this->showColumns();
         $this->showRelationshipColumn('manga_id');
+
+        $this->crud->modifyColumn('url', [
+            'type'     => 'closure',
+            'function' => function($entry) {
+                return $entry->urlWithLink();
+            },
+        ]);
     }
 
     /**
