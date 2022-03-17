@@ -142,7 +142,8 @@ return [
 
     // JS files that are loaded in all pages, using Laravel's mix() helper
     'mix_scripts' => [// file_path => manifest_directory_path
-        // 'js/app.js' => '',
+        'js/app.js' => 'public/js',
+        'js/swal2_helper.js' => 'public/js',
     ],
 
     // -------------

@@ -23,6 +23,7 @@ class ChapterCrudController extends CrudController
     use \Backpack\ReviseOperation\ReviseOperation;
     use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
+    use \App\Http\Controllers\Admin\Operations\Chapter\ScanOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
