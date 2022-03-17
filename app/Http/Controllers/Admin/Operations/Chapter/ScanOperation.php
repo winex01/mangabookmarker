@@ -71,19 +71,25 @@ trait ScanOperation
 
                     $chapter = str_replace('chapter-', '', $chapter); // mangakakalot/manganelo
                     
-                    modelInstance('Chapter')->create([
-                        'manga_id' => $manga->id,
-                        'chapter' => $chapter,
-                        'url' => $url,
-                    ]);
+                    if (is_numeric($chapter)) {
+                        $data = [
+                            'manga_id' => $manga->id,
+                            'chapter' => $chapter,
+                            'url' => $url,
+                        ];
 
-                    // manga has no chapters yet, then after saving the latest chapter then exist loop.
-                    if ($currentChapter == null) {  
-                        break; // exit loop
+                        // manga has no chapters yet, then after saving the latest chapter then exist loop.
+                        if ($currentChapter == null) {
+                            modelInstance('Chapter')->create($data);
+                            break;
+                        }else {
+                            if ($currentChapter->chapter < $chapter) {
+                                modelInstance('Chapter')->create($data);
+                            }
+                        }
                     }
 
-                    // TODO:: dont allow duplicate, and only insert latest/new chapters
-
+                    
                 }// loop links
             }// loop sources
         }// loop manga
@@ -93,3 +99,4 @@ trait ScanOperation
 
     }
 }
+// TODO:: dont allow duplicate, and only insert latest/new chapters

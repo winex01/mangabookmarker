@@ -77,6 +77,7 @@ class ChapterCrudController extends CrudController
     private function customInputs()
     {
         $this->inputs();
+        $this->addRelationshipField('manga_id');
     }
 }
 // TODO:: validation request unique manga and chapter.
