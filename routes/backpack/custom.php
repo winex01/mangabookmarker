@@ -16,7 +16,6 @@ Route::group([
 ], function () { // custom admin routes
     Route::crud('audittrail', 'AuditTrailCrudController');
     Route::crud('menu', 'MenuCrudController');
-    Route::crud('source', 'SourceCrudController');
     Route::crud('mangatype', 'MangaTypeCrudController');
     Route::crud('tag', 'TagCrudController');
     Route::crud('manga', 'MangaCrudController');

@@ -133,5 +133,8 @@ class MangaCrudController extends CrudController
             'name' => 'alternative_name',
             'type' => 'textarea'
         ]);
+
+        // TODO:: sources
+        
     }
 }
