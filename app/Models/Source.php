@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Model;
 class Source extends Model
 {
+    use \Illuminate\Database\Eloquent\SoftDeletes;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
