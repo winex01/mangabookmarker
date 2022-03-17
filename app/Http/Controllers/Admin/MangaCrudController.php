@@ -30,7 +30,6 @@ class MangaCrudController extends CrudController
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchTagTrait; 
     
-    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -119,7 +118,7 @@ class MangaCrudController extends CrudController
             'aspect_ratio' => 0,
         ]);
 
-        // remove to fix arrangement, added again at the bottom, inlinecreate cause arrange to disorder
+        // remove to fix arrangement, added again at the bottom
         $this->crud->removeField('manga_type_id');
         $this->crud->removeField('alternative_name');
 

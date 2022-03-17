@@ -91,6 +91,6 @@ class SourceCrudController extends CrudController
     private function customInputs()
     {
         $this->inputs();
-        $this->addInlineCreateField('manga_id');
+        $this->addRelationshipField('manga_id');
     }
 }
