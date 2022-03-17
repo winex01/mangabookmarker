@@ -32,7 +32,8 @@
                 } else {
                     // Show a success notification bubble
                     swalSuccess();
-                }                 
+                }
+                crud.table.ajax.reload();                 
               },
               error: function () {
                 swalError();

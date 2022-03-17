@@ -63,13 +63,12 @@ trait ScanOperation
             foreach (json_decode($manga->sources) as $source) {
                 $crawler = $client->request('GET', $source->url);
                 $links = $crawler->filter($source->crawler_filter)->links();
-        
-
 
                 foreach ($links as $link) {
                     $url = $link->getUri();
                     $chapter = str_replace($source->url, '', $url);
                     $chapter = str_replace('/', '', $chapter);
+
                     $chapter = str_replace('chapter-', '', $chapter); // mangakakalot/manganelo
                     
                     modelInstance('Chapter')->create([
