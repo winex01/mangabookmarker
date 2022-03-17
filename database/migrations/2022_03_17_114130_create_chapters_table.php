@@ -16,7 +16,11 @@ class CreateChaptersTable extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('manga_id')->constrained();
+            $table->foreignId('manga_id')
+            ->constrained()
+            ->onDelete('cascade')
+            ->onUpdate('cascade'); 
+            
             $table->string('chapter');
             $table->string('url');
 

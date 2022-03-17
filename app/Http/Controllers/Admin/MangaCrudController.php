@@ -79,7 +79,7 @@ class MangaCrudController extends CrudController
 
                 $temp = collect(json_decode($json))->map(function ($item, $key) use ($obj, $separator) {
                     $url = $item->{$obj};
-                    return '<a title="Scan Filter: '.$item->crawler_filter.'" href="'.url($url).'" target="_blank">'.$url.'</a>';
+                    return anchorNewTab($url, $url, 'Scan Filter: '. $item->crawler_filter);
                 })->toArray();
                         
                 return implode($separator, $temp);

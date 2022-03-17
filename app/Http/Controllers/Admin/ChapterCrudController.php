@@ -48,6 +48,8 @@ class ChapterCrudController extends CrudController
     {
         $this->showColumns();
         $this->showRelationshipColumn('manga_id');
+
+        $this->anchorColumn('url');
     }
 
     /**
