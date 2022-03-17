@@ -458,6 +458,16 @@ if (! function_exists('removeFromArrays')) {
 	}
 }
 
+if (! function_exists('jsonObjectToArray')) {
+	function jsonObjectToArray($json, $obj) {
+		$temp = collect(json_decode($json))->map(function ($item, $key) use ($obj) {
+			return ucwords($item->{$obj});
+		})->toArray();
+		
+		return $temp;
+	}
+}
+
 if (! function_exists('jsonToArrayImplode')) {
 	function jsonToArrayImplode($json, $obj, $separator = ',<br>') {
 		$temp = collect(json_decode($json))->map(function ($item, $key) use ($obj, $separator) {

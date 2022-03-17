@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Operations\Chapter;
 
+use Goutte\Client;
 use Illuminate\Support\Facades\Route;
 
 trait ScanOperation
@@ -49,10 +50,46 @@ trait ScanOperation
     {
         $this->crud->hasAccessOrFail('scan');
 
-        // TODO:: Guotte/Client business logic here
-        
         $error = false;
+        $client = new Client();
+
+        // loop all mangas
+        $mangas = modelInstance('Manga')->all();
+
+        foreach ($mangas as $manga) {
+            // get my current chapter, check last chapter entries of that manga_id, if no data then save only the first links
+            $currentChapter = modelInstance('Chapter')->where('manga_id', $manga->id)->first();
+
+            foreach (json_decode($manga->sources) as $source) {
+                $crawler = $client->request('GET', $source->url);
+                $links = $crawler->filter($source->crawler_filter)->links();
         
+
+
+                foreach ($links as $link) {
+                    $url = $link->getUri();
+                    $chapter = str_replace($source->url, '', $url);
+                    $chapter = str_replace('/', '', $chapter);
+                    $chapter = str_replace('chapter-', '', $chapter); // mangakakalot/manganelo
+                    
+                    modelInstance('Chapter')->create([
+                        'manga_id' => $manga->id,
+                        'chapter' => $chapter,
+                        'url' => $url,
+                    ]);
+
+                    // manga has no chapters yet, then after saving the latest chapter then exist loop.
+                    if ($currentChapter == null) {  
+                        break; // exit loop
+                    }
+
+                    // TODO:: dont allow duplicate, and only insert latest/new chapters
+
+                }// loop links
+            }// loop sources
+        }// loop manga
+
+
         return compact('error');
 
     }

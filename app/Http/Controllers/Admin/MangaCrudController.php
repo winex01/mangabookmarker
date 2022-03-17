@@ -73,9 +73,19 @@ class MangaCrudController extends CrudController
             'name' => 'sources',
             'type'     => 'closure',
             'function' => function($entry) {
-                return jsonToLinkImplode($entry->sources, 'url');
+                $json = $entry->sources;
+                $obj = 'url';
+                $separator = ',<br>';
+
+                $temp = collect(json_decode($json))->map(function ($item, $key) use ($obj, $separator) {
+                    $url = $item->{$obj};
+                    return '<a title="Scan Filter: '.$item->crawler_filter.'" href="'.url($url).'" target="_blank">'.$url.'</a>';
+                })->toArray();
+                        
+                return implode($separator, $temp);
             },
         ]);
+        
     }
 
     protected function setupShowOperation()
@@ -151,8 +161,11 @@ class MangaCrudController extends CrudController
             'fields' => [
                 [
                     'name'        => 'url', 
-                    'label'       => convertColumnToHumanReadable('url'),
                     'type'        => 'url', 
+                ],
+                [
+                    'name'        => 'crawler_filter', 
+                    'type'        => 'text', 
                 ]
             ],
         
