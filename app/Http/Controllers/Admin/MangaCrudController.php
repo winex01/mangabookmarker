@@ -67,6 +67,15 @@ class MangaCrudController extends CrudController
         // limit column length so it wont destroy table column arrangement,
         // if it's too long the authors/any pivot column wont whow in correct order in list
         $this->limitColumn('alternative_name', 100);
+
+        $this->crud->removeColumn('sources');
+        $this->crud->addColumn([
+            'name' => 'sources',
+            'type'     => 'closure',
+            'function' => function($entry) {
+                return jsonToLinkImplode($entry->sources, 'url');
+            },
+        ]);
     }
 
     protected function setupShowOperation()

@@ -468,6 +468,17 @@ if (! function_exists('jsonToArrayImplode')) {
 	}
 }
 
+if (! function_exists('jsonToLinkImplode')) {
+	function jsonToLinkImplode($json, $obj, $separator = ',<br>') {
+		$temp = collect(json_decode($json))->map(function ($item, $key) use ($obj, $separator) {
+			$url = $item->{$obj};
+			return '<a href="'.url($url).'" target="_blank">'.$url.'</a>';
+		})->toArray();
+                
+		return implode($separator, $temp);
+	}
+}
+
 /*
 |--------------------------------------------------------------------------
 | Number related stuff
