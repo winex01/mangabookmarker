@@ -65,30 +65,24 @@ trait ScanOperation
                 $links = $crawler->filter($source->crawler_filter)->links();
 
                 foreach ($links as $link) {
-                    $url = $link->getUri();
-                    $chapter = str_replace($source->url, '', $url);
-                    $chapter = str_replace('/', '', $chapter);
-
-                    $chapter = str_replace('chapter-', '', $chapter); // mangakakalot/manganelo
-                    
-                    if (is_numeric($chapter)) {
-                        $data = [
-                            'manga_id' => $manga->id,
-                            'chapter' => $chapter,
-                            'url' => $url,
-                        ];
-
+                    debug($link);
+                    $data = $this->prepareData($manga->id, $link->getUri(), $source->url);
+                    if (is_numeric($data['chapter'])) {
                         // manga has no chapters yet, then after saving the latest chapter then exist loop.
                         if ($currentChapter == null) {
                             modelInstance('Chapter')->create($data);
                             break;
                         }else {
-                            if ($currentChapter->chapter < $chapter) {
-                                modelInstance('Chapter')->create($data);
+                            if ($currentChapter->chapter < $data['chapter']) {
+                                modelInstance('Chapter')->firstOrCreate($data);
+                            }else {
+                                break; // add this break so i will exit the foreach if no latest chapters found
                             }
                         }
+                    }else {
+                        $error = true;
+                        return compact('error');
                     }
-
                     
                 }// loop links
             }// loop sources
@@ -96,7 +90,22 @@ trait ScanOperation
 
 
         return compact('error');
+    }
 
+    private function prepareData($mangaId, $crawUrl, $sourceUrl)
+    {
+        if ( stringContains($sourceUrl, 'www.test.com') ) {
+            $test = '';
+        }else {
+            $chapter = str_replace($sourceUrl, '', $crawUrl);
+            $chapter = str_replace('/', '', $chapter);
+            $chapter = str_replace('chapter-', '', $chapter);
+        }
+
+        return [
+            'manga_id' => $mangaId,
+            'chapter' => $chapter,
+            'url' => $crawUrl,
+        ];
     }
 }
-// TODO:: dont allow duplicate, and only insert latest/new chapters

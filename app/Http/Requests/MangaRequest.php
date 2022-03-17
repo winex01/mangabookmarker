@@ -24,8 +24,6 @@ class MangaRequest extends FormRequest
             'title'                  => 'required',
             'manga_type_id'          => 'nullable|numeric',
             'sources'                => 'required|json',
-            'sources.url'            => 'required|url',
-            'sources.crawler_filter' => 'required',
         ];
 
         return $rules;
