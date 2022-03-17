@@ -16,11 +16,33 @@
 	if (typeof scanEntries != 'function') {
 	  function scanEntries(button) {
 
-          swalLoader();
+          swalLoader('Scanning Chapter...');
+
+          $.ajax({
+              type: "post",
+              url: "{{ url($crud->route) }}/scan",
+              success: function (response) {
+                // console.log(response);
+                if (response.error) {
+                    swalError();
+                    new Noty({
+                        type: "warning",
+                        text: "<strong>{!! __('Scanned Error') !!}</strong><br>{!! __('Whoops something went wrong.') !!}"
+                    }).show();			          	  
+                } else {
+                    // Show a success notification bubble
+                    swalSuccess();
+                }                 
+              },
+              error: function () {
+                swalError();
+              }
+          });
 
       } // end function scanEntries
 	}
 </script>
+<script src="{{ asset('js/swal2_helper.js') }}"></script>
 @endpush
 
 

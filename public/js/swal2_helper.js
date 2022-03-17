@@ -1,7 +1,7 @@
-function swalLoader() {
+function swalLoader(title = "Generating export...", text = "Please wait") {
     Swal.fire({
-          title: "Generating export...",
-          text: "Please wait",
+          title: title,
+          text: text,
         allowOutsideClick: false,
           showConfirmButton: false,
         willOpen: () => {
@@ -18,9 +18,9 @@ function swalError() {
     });
 }
 
-function swalSuccess() {
+function swalSuccess(title = "Finished!") {
     Swal.fire({
-      title: "Finished!",
+      title: title,
       icon: "success",
       timer: 1000,
       showConfirmButton: false,

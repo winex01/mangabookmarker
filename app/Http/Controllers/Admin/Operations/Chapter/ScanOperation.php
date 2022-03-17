@@ -17,7 +17,7 @@ trait ScanOperation
      */
     protected function setupScanRoutes($segment, $routeName, $controller)
     {
-        Route::get($segment.'/scan', [
+        Route::post($segment.'/scan', [
             'as'        => $routeName.'.scan',
             'uses'      => $controller.'@scan',
             'operation' => 'scan',
@@ -50,5 +50,10 @@ trait ScanOperation
         $this->crud->hasAccessOrFail('scan');
 
         // TODO:: Guotte/Client business logic here
+        
+        $error = false;
+        
+        return compact('error');
+
     }
 }
