@@ -46,8 +46,8 @@ class ChapterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->showColumns(null, ['url']);
-        $this->showRelationshipColumn('manga_id');
+        $this->showColumns(null, ['url', 'dismiss']);
+        $this->showRelationshipColumn('manga_id', 'title');
 
         $this->crud->addColumn([
             'name' => 'manga.photo',

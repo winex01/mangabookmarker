@@ -43,6 +43,8 @@ class CrawlerFilterCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->showColumns();
+
+        $this->anchorColumn('name', 'name');
     }
 
     /**
