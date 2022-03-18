@@ -46,10 +46,37 @@ class ChapterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->showColumns();
+        $this->showColumns(null, ['url']);
         $this->showRelationshipColumn('manga_id');
 
-        $this->anchorColumn('url');
+        $this->crud->addColumn([
+            'name' => 'manga.photo',
+            'label' => 'Photo',
+            'type'   => 'image',
+            'height' => '50px',
+            'width'  => '40px',
+            'orderable' => false,
+        ])->beforeColumn('manga_id');
+
+        $this->crud->modifyColumn('chapter', [
+            'type' => 'closure',
+            'function' => function($entry) {
+                return anchorNewTab($entry->url, $entry->chapter, $entry->url);
+            }
+        ]);
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->crud->set('show.setFromDb', false); // remove fk column such as: gender_id
+        $this->setupListOperation();
+
+        // photo
+        $this->crud->modifyColumn('manga.photo', [
+            'height' => '300px',
+            'width'  => '200px',
+        ]);
+
     }
 
     /**
