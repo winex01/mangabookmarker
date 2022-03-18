@@ -109,5 +109,5 @@ class ChapterCrudController extends CrudController
         $this->addRelationshipField('manga_id');
     }
 }
-// TODO:: validation request unique manga and chapter.
-// TODO:: add Scan button operation above, beside create chapter.
+// TODO:: add dismiss
+// TODO:: add bulkDissmiss
