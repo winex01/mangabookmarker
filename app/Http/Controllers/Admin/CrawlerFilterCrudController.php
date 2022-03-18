@@ -44,7 +44,7 @@ class CrawlerFilterCrudController extends CrudController
     {
         $this->showColumns();
 
-        $this->anchorColumn('name', 'name');
+        // $this->anchorColumn('name', 'name');
     }
 
     /**
