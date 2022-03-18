@@ -21,4 +21,5 @@ Route::group([
     Route::crud('manga', 'MangaCrudController');
     Route::crud('author', 'AuthorCrudController');
     Route::crud('chapter', 'ChapterCrudController');
+    Route::crud('crawlerfilter', 'CrawlerFilterCrudController');
 }); // this should be the absolute last line of this file

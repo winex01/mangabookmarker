@@ -29,6 +29,7 @@ class MangaCrudController extends CrudController
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchMangaTypeTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchAuthorTrait; 
     use \App\Http\Controllers\Admin\Traits\Fetch\FetchTagTrait; 
+    use \App\Http\Controllers\Admin\Traits\Fetch\FetchCrawlerFilterTrait; 
     
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -165,7 +166,10 @@ class MangaCrudController extends CrudController
                 ],
                 [
                     'name'        => 'crawler_filter', 
-                    'type'        => 'text', 
+                    'type'        => 'select2_from_array',
+                    'options'     => collect($this->fetchCrawlerFilter()->items())->pluck('name', 'filter')->toArray(),
+                    'allows_null' => true,
+                    'placeholder' => trans('lang.select_placeholder'), 
                 ]
             ],
         

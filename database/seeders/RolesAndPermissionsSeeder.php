@@ -121,6 +121,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'chapters_revise',
             'chapters_scan',
         ],
+
+        'crawler_filters' => [
+            'crawler_filters_list',
+            'crawler_filters_create', 
+            'crawler_filters_update', 
+            'crawler_filters_delete', 
+            'crawler_filters_revise', 
+        ],
     ];
 
     /**
