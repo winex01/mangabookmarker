@@ -14,14 +14,14 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class ChapterCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
-    use \App\Http\Controllers\Admin\Operations\ForceDeleteOperation;
-    use \App\Http\Controllers\Admin\Operations\ForceBulkDeleteOperation;
-    use \Backpack\ReviseOperation\ReviseOperation;
-    use \App\Http\Controllers\Admin\Operations\ExportOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
+    // use \App\Http\Controllers\Admin\Operations\ForceDeleteOperation;
+    // use \App\Http\Controllers\Admin\Operations\ForceBulkDeleteOperation;
+    // use \Backpack\ReviseOperation\ReviseOperation;
+    // use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
     use \App\Http\Controllers\Admin\Operations\Chapter\ScanOperation;
     use \App\Http\Controllers\Admin\Operations\Chapter\DismissOperation;
@@ -48,10 +48,6 @@ class ChapterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        // show only not dismiss chapters
-        $this->crud->query->notDismiss();
-
-
         $this->showColumns(null, ['url', 'dismiss']);
         $this->showRelationshipColumn('manga_id', 'title');
 
@@ -70,6 +66,8 @@ class ChapterCrudController extends CrudController
                 return anchorNewTab($entry->url, $entry->chapter, $entry->url);
             }
         ]);
+        
+        $this->filters();
     }
 
     protected function setupShowOperation()
@@ -114,5 +112,11 @@ class ChapterCrudController extends CrudController
         $this->inputs();
         $this->addRelationshipField('manga_id');
     }
+
+    private function filters()
+    {
+        $this->crud->removeFilter('trashed');
+
+        $this->removeGlobalScopeFilter('CurrentChapterScope');
+    }
 }
-// TODO:: add bulkDissmiss

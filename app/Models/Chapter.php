@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Chapter extends Model
 {
@@ -26,6 +27,15 @@ class Chapter extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::addGlobalScope('CurrentChapterScope', function (Builder $builder) {
+            (new self)->scopeNotDismiss($builder);
+        });
+    }
+
 
     /*
     |--------------------------------------------------------------------------
