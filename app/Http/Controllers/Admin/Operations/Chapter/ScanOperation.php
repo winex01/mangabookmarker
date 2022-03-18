@@ -117,7 +117,3 @@ trait ScanOperation
         ];
     }
 }
-/* 
-    Lists of supported website:
-    - https://readmanganato.com/
-*/
