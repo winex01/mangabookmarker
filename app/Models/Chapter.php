@@ -42,6 +42,11 @@ class Chapter extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeNotDismiss($query)
+    {
+        return $query->where('dismiss', 0);
+    }
+    
 
     /*
     |--------------------------------------------------------------------------

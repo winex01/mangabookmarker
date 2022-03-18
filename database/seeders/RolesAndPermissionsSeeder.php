@@ -120,6 +120,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'chapters_force_bulk_delete',
             'chapters_revise',
             'chapters_scan',
+            'chapters_dismiss',
         ],
 
         'crawler_filters' => [

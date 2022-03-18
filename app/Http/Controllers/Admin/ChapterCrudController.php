@@ -24,6 +24,8 @@ class ChapterCrudController extends CrudController
     use \App\Http\Controllers\Admin\Operations\ExportOperation;
     use \App\Http\Controllers\Admin\Traits\CrudExtendTrait;
     use \App\Http\Controllers\Admin\Operations\Chapter\ScanOperation;
+    use \App\Http\Controllers\Admin\Operations\Chapter\DismissOperation;
+    use \App\Http\Controllers\Admin\Traits\FilterTrait;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -46,6 +48,10 @@ class ChapterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        // show only not dismiss chapters
+        $this->crud->query->notDismiss();
+
+
         $this->showColumns(null, ['url', 'dismiss']);
         $this->showRelationshipColumn('manga_id', 'title');
 
@@ -109,5 +115,4 @@ class ChapterCrudController extends CrudController
         $this->addRelationshipField('manga_id');
     }
 }
-// TODO:: add dismiss
 // TODO:: add bulkDissmiss
