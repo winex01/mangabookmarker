@@ -64,6 +64,9 @@ class ChapterCrudController extends CrudController
             'type' => 'closure',
             'function' => function($entry) {
                 return anchorNewTab($entry->url, $entry->chapter, $entry->url);
+            },
+            'searchLogic' => function ($query, $column, $searchTerm) {
+                $query->orWhere('chapter', 'like', '%'.$searchTerm.'%');
             }
         ]);
         
