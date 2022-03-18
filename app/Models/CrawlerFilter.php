@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Model;
-
-class Chapter extends Model
+class CrawlerFilter extends Model
 {
-    use \Illuminate\Database\Eloquent\SoftDeletes;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'chapters';
+    protected $table = 'crawler_filters';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -32,21 +29,12 @@ class Chapter extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function manga()
-    {
-        return $this->belongsTo(\App\Models\Manga::class);
-    }
 
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
-    public function scopeNotDismiss($query)
-    {
-        return $query->where('dismiss', 0);
-    }
-    
 
     /*
     |--------------------------------------------------------------------------
