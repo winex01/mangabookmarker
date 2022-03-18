@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MenusTableSeeder::class);
         $this->call(MangaTypesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
+        $this->call(CrawlerFiltersTableSeeder::class);
     }
 
     private function createSuperAdminAccount()

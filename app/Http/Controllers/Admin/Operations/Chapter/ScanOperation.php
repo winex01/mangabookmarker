@@ -59,7 +59,11 @@ trait ScanOperation
         foreach ($mangas as $manga) {
             foreach (json_decode($manga->sources) as $source) {
                 // get my current chapter, check last chapter entries of that manga_id, if no data then save only the first links
-                $currentChapter = modelInstance('Chapter')->where('manga_id', $manga->id)->first();// reQuery every source to avoid duplicate
+                // reQuery every source to avoid duplicate
+                $currentChapter = modelInstance('Chapter')
+                                    ->withoutGlobalScope('CurrentChapterScope')
+                                    ->where('manga_id', $manga->id)
+                                    ->first();
                 
                 $crawler = $client->request('GET', $source->url);
                 $links = $crawler->filter($source->crawler_filter)->links();
@@ -74,9 +78,10 @@ trait ScanOperation
                         }else {
                             if ($currentChapter->chapter < $data['chapter']) {
                                 $count = modelInstance('Chapter')
-                                ->where('manga_id', $manga->id)
-                                ->where('chapter', $data['chapter'])
-                                ->count();
+                                    ->withoutGlobalScope('CurrentChapterScope')
+                                    ->where('manga_id', $manga->id)
+                                    ->where('chapter', $data['chapter'])
+                                    ->count();
 
                                 // avoid duplicate
                                 if ($count == 0) {
@@ -117,7 +122,3 @@ trait ScanOperation
         ];
     }
 }
-/* 
-    Lists of supported website:
-    - https://readmanganato.com/
-*/
