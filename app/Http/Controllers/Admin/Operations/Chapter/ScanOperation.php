@@ -57,15 +57,14 @@ trait ScanOperation
         $mangas = modelInstance('Manga')->all();
 
         foreach ($mangas as $manga) {
-            // get my current chapter, check last chapter entries of that manga_id, if no data then save only the first links
-            $currentChapter = modelInstance('Chapter')->where('manga_id', $manga->id)->first();
-
             foreach (json_decode($manga->sources) as $source) {
+                // get my current chapter, check last chapter entries of that manga_id, if no data then save only the first links
+                $currentChapter = modelInstance('Chapter')->where('manga_id', $manga->id)->first();// reQuery every source to avoid duplicate
+                
                 $crawler = $client->request('GET', $source->url);
                 $links = $crawler->filter($source->crawler_filter)->links();
 
                 foreach ($links as $link) {
-                    debug($link);
                     $data = $this->prepareData($manga->id, $link->getUri(), $source->url);
                     if (is_numeric($data['chapter'])) {
                         // manga has no chapters yet, then after saving the latest chapter then exist loop.
@@ -74,7 +73,16 @@ trait ScanOperation
                             break;
                         }else {
                             if ($currentChapter->chapter < $data['chapter']) {
-                                modelInstance('Chapter')->firstOrCreate($data);
+                                $count = modelInstance('Chapter')
+                                ->where('manga_id', $manga->id)
+                                ->where('chapter', $data['chapter'])
+                                ->count();
+
+                                // avoid duplicate
+                                if ($count == 0) {
+                                    modelInstance('Chapter')->firstOrCreate($data);
+                                }
+
                             }else {
                                 break; // add this break so i will exit the foreach if no latest chapters found
                             }
