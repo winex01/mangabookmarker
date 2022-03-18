@@ -59,6 +59,11 @@ class Manga extends Model
         return $this->belongsToMany(\App\Models\Tag::class);
     }
 
+    public function chapters()
+    {
+        return $this->hasMany(\App\Models\Chapter::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -79,6 +84,10 @@ class Manga extends Model
     {
         $authors = $this->authors()->pluck('name')->toArray();
         $authors = implode(', ', $authors);
+
+        if ($authors == '' || $authors == null) {
+            return $this->title;
+        }
 
         return $this->title ." - ($authors)";
     }

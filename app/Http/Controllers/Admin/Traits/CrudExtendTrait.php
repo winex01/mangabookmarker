@@ -415,6 +415,17 @@ trait CrudExtendTrait
     | Columns Related Stuff
     |--------------------------------------------------------------------------
     */
+    public function anchorColumn($col)
+    {
+        return $this->crud->modifyColumn($col, [
+            'type'     => 'closure',
+            'function' => function($entry) use ($col) {
+                return anchorNewTab($entry->{$col}, $entry->{$col});
+            },
+        ]);
+
+    }
+
     public function limitColumn($col, $limit = null)
     {
         $this->removeColumn($col);

@@ -107,6 +107,20 @@ class RolesAndPermissionsSeeder extends Seeder
             'authors_delete', 
             'authors_revise', 
         ],
+
+        'chapters' => [
+            'chapters_list',
+            // 'chapters_create',
+            'chapters_show',
+            'chapters_update',
+            'chapters_delete',
+            'chapters_bulk_delete',
+            'chapters_export',
+            'chapters_force_delete',
+            'chapters_force_bulk_delete',
+            'chapters_revise',
+            'chapters_scan',
+        ],
     ];
 
     /**
