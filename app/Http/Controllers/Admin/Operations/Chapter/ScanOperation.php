@@ -113,6 +113,9 @@ trait ScanOperation
             $chapter = str_replace($sourceUrl, '', $crawUrl);
             $chapter = str_replace('/', '', $chapter);
             $chapter = str_replace('chapter-', '', $chapter);
+            
+            // support decimal chapters ex. 1.1
+            $chapter = str_replace('-', '.', $chapter);
         }
 
         return [
