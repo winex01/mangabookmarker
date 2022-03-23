@@ -22,7 +22,7 @@
               type: "post",
               url: "{{ url($crud->route) }}/scan",
               success: function (response) {
-                // console.log(response);
+                console.log(response);
                 if (response.error) {
                     swalError();
                     new Noty({
