@@ -51,6 +51,7 @@ trait ScanOperation
         $this->crud->hasAccessOrFail('scan');
 
         $error = false;
+        $failMangas = [];
         $client = new Client();
 
         // loop all mangas
@@ -93,8 +94,7 @@ trait ScanOperation
                             }
                         }
                     }else {
-                        $error = true;
-                        return compact('error');
+                        $failMangas[] = $data;
                     }
                     
                 }// loop links
@@ -102,7 +102,7 @@ trait ScanOperation
         }// loop manga
 
 
-        return compact('error');
+        return compact('error', 'failMangas');
     }
 
     private function prepareData($mangaId, $crawUrl, $sourceUrl)
